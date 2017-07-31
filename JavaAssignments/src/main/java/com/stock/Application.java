@@ -17,11 +17,11 @@ import java.util.List;
 public class Application implements CommandLineRunner {
     @Autowired
     StockFileProcessor processor ;
-       StockReader read;
+
 
 
     public void run (String...strings) throws ParseException {
-        read.parseCSVFileToObject();
+
                processor.process();
 
 
