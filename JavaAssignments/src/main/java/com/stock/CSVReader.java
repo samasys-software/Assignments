@@ -12,24 +12,23 @@ import java.util.List;
 @Component
 public class CSVReader {
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public  String getStockSymbol() {
+        return stockSymbol;
     }
 
-    public String getFileName() {
-        return fileName;
+    public void setStockSymbol(String stockSymbol) {
+        this.stockSymbol = stockSymbol;
     }
 
-    private String fileName;
+    private  String stockSymbol;
 
-  public  List<String[]> read(){
+  public   List<String[]> read(){
 
-
-        String csvFile="d:/fgs/stock.csv";
-        setFileName("stock");
-        String delimiter=",";
-        String line="";
-
+         String csvFile="d:/fgs/AAPL.csv";
+         String filename=csvFile.substring(7,11);
+         setStockSymbol(filename);
+         String delimiter=",";
+             String line="";
         try{
 
             BufferedReader br=new BufferedReader(new FileReader(csvFile));
@@ -38,7 +37,9 @@ public class CSVReader {
             while((line=br.readLine())!=null ){
                 String[] names= line.split(delimiter);
                 lines.add(names);
+                System.out.println("out="+names[0]+","+names[1]+","+names[2]+","+names[3]+","+names[4]+","+names[5]+","+names[6]+"");
                 System.out.println(lines);
+                System.out.println("lines");
 
             }
             return lines;

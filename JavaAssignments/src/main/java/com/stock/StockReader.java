@@ -17,30 +17,26 @@ import java.util.List;
 @Component// spring bean component
 
 public class StockReader {
-    public final static String DATE_FORMAT = "YYYY-MM-dd";
 @Autowired
-
-
-
-    CSVReader csvReader;
+CSVReader csvReader;
+   public final static String DATE_FORMAT = "yyyy-MM-dd";
+ // public final static String DATE_FORMAT = "MM/DD/yyyy";
 
   public List<StockQuote> parseCSVFileToObject() throws ParseException {
       List<StockQuote> stockQuotes = new LinkedList<StockQuote>();
-      List<String[]> list = csvReader.read();
-      for (int i = 1; i < list.size(); i++) {
-          String[] line = list.get(i);
+      List<String[]> lists = csvReader.read();
+      for (int i = 1; i < lists.size(); i++) {
+          String[] line = lists.get(i);
           StockQuote stockQuote = new StockQuote();
           DateFormat df = new SimpleDateFormat(DATE_FORMAT);
-
+        //  System.out.println(df);
           stockQuote.setDate(df.parse(line[0]));
-
           stockQuote.setClose(Double.parseDouble(line[1]));
-
+          stockQuote.setStockSymbol(csvReader.getStockSymbol());
           stockQuotes.add(stockQuote);
-          System.out.println(stockQuotes);
+          System.out.println(lists);
       }
       return stockQuotes;
   }
-
 
 }

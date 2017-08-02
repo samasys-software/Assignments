@@ -13,7 +13,8 @@ public class StockQuote {
 
 
 
-    private String fileName;
+
+    private String stockSymbol;
     private Date date;
     private double open;
     private double high;
@@ -21,13 +22,16 @@ public class StockQuote {
     private double close;
     private double volume;
     private double adjclose;
-    public String getFileName() {
-        return fileName;
+
+    public Long getQuoteId() {
+        return quoteId;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setQuoteId(Long quoteId) {
+        this.quoteId = quoteId;
     }
+
+    private Long quoteId;
 
     public double getClose() {
         return close;
@@ -43,6 +47,13 @@ public class StockQuote {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+    public String getStockSymbol() {
+        return stockSymbol;
+    }
+
+    public void setStockSymbol(String stockSymbol) {
+        this.stockSymbol = stockSymbol;
     }
 
 }

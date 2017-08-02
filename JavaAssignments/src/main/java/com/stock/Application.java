@@ -16,16 +16,13 @@ import java.util.List;
 
 public class Application implements CommandLineRunner {
     @Autowired
+
     StockFileProcessor processor ;
-
-
 
     public void run (String...strings) throws ParseException {
 
                processor.process();
-
-
-        System.out.println("Welcome");
+            System.out.println("Welcome");
 
     }
     public static void main(String args[]){
