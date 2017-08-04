@@ -30,11 +30,18 @@ public class DataBaseManager {
         return template.update(DbSql.CREATE_STOCK_QUOTE, arg);
 
     }
-    public List<StockQuote> getStockQuotes(String st) {
-        Object[] args=new Object[]{st};
+    public List<StockQuote> getStockQuotes(String fileName) {
+        Object[] args=new Object[]{fileName};
 
         return template.query(DbSql.FETCH_STOCK_QUOTE, args, new StockFileMapper());
 
 
     }
+    public int movStockQuote(String fileName,Date date,double avg)
+    {
+        Object[] arg = new Object[]{fileName,date,avg};
+        return template.update(DbSql.MOVE_STOCK_QUOTE, arg);
+
+    }
+
 }

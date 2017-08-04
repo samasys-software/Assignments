@@ -31,17 +31,42 @@ public class StockFileProcessor
    // stockReader.parseCSVFileToObject();
 
         List<StockQuote> list=stockReader.parseCSVFileToObject();
-        for(int i=0;i<list.size();i++) {
+        for(int i=0;i<list.size();i++)
+        {
 
 
             StockQuote s = list.get(i);
 
-            //System.out.println(s);
 
             databaseManager.createStoke(s);
         }
-         String st="APPL";
-        databaseManager.getStockQuotes(st);
+        List<StockQuote> stockQuotes = null;
+
+
+        String fileName=list.get(0).getSymbol();
+
+
+
+        stockQuotes=databaseManager.getStockQuotes(fileName);
+        for(int x=9;x<stockQuotes.size();x++)
+        {
+            StockQuote stockQuote = stockQuotes.get(x);
+
+
+                double sum = 0.0;
+                for (int y = 1; y <= 10; y++)
+                {
+
+                    sum = sum + stockQuote.getAdjclose();
+                }
+
+
+                double avg = sum / 10;
+                databaseManager.movStockQuote(fileName, stockQuote.getDate(), avg);
+
+
+
+        }
 
 
     }
