@@ -33,6 +33,7 @@ public class StockQuote {
 
     private Long quoteId;
 
+
     public double getClose() {
         return close;
     }

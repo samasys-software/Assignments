@@ -20,7 +20,7 @@ public class StockReader {
 @Autowired
 CSVReader csvReader;
    public final static String DATE_FORMAT = "yyyy-MM-dd";
- // public final static String DATE_FORMAT = "MM/DD/yyyy";
+
 
   public List<StockQuote> parseCSVFileToObject() throws ParseException {
       List<StockQuote> stockQuotes = new LinkedList<StockQuote>();

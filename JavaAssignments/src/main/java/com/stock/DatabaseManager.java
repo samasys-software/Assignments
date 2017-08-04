@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,4 +29,11 @@ public class DatabaseManager {
         Object[] args=new Object[]{stockSymbol};
         return template.query(DBSql.FETCH_STOCKQUOTES,args,new StockFileMapper());
      }
+
+    public int saveAverageStockQuotes(double average, Date date, String stockSymbol) {
+         Object[] args=new Object[]{stockSymbol,date,average};
+         return template.update(DBSql.SAVE_AVERAGE_STOCKQUOTES,args);
+    }
+
+
 }
