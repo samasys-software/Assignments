@@ -94,4 +94,16 @@ public class StockQuote
     private double volume;
     private String stock;
 
+    public long getQuoteId()
+    {
+        return quoteId;
+    }
+
+    public void setQuoteId(long quoteId)
+    {
+        this.quoteId = quoteId;
+    }
+
+    private long quoteId;
+
 }
