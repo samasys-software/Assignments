@@ -55,6 +55,7 @@ public class StockQuoteDTO {
         this.stockSymbol = stockSymbol;
     }
 
+
     public List<StockQuote> getResult() {
         return result;
     }

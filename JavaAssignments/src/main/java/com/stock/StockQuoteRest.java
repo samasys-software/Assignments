@@ -5,6 +5,8 @@ import com.stock.bussinessobjects.StockQuote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import java.text.ParseException;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import java.util.List;
 public class StockQuoteRest {
 
 
+
  private final DatabaseManager databaseManager;
 
 
@@ -23,18 +26,20 @@ public class StockQuoteRest {
 public StockQuoteRest(DatabaseManager manager) {
     databaseManager = manager;
 }
+    @Produces(MediaType.APPLICATION_JSON)
 
-    StockQuote stockQuote=new StockQuote();
     public StockQuoteDTO getStockSymbol() throws ParseException {
         StockQuoteDTO dto=new StockQuoteDTO();
-     List stockSymbol=databaseManager.fetchStockSymbol();
-     dto.setResult(stockSymbol);
+     String stockSymbol=databaseManager.fetchStockSymbol();
+     System.out.println(stockSymbol);
+     dto.setStockSymbol(stockSymbol);
+
      return dto;
     }
     public StockQuoteDTO getStockquotes(){
 
         StockQuoteDTO dto1=new StockQuoteDTO();
-
+        StockQuote stockQuote=new StockQuote();
        // String stockSymbol=stockQuote.getStockSymbol();
 
         List stockQuotes=databaseManager.fetchStockQuotes(stockQuote.getStockSymbol());
@@ -44,6 +49,7 @@ public StockQuoteRest(DatabaseManager manager) {
     }
     public StockQuoteDTO getAverageForStockSymbol(){
         StockQuoteDTO dto2=new StockQuoteDTO();
+        StockQuote stockQuote=new StockQuote();
         //String stockSymbol=dto2.getStockSymbol();
         List average=databaseManager.fetchAverageForStockSymbol(stockQuote.getStockSymbol());
         dto2.setResult(average);

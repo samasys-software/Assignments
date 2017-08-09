@@ -26,8 +26,8 @@ public class DatabaseManager {
        Object[] args=new Object[]{stockQuote.getStockSymbol(),stockQuote.getDate(),stockQuote.getClose()};
         return template.update(DBSql.SAVE_STOCKQUOTES,args);
      }
-     public List<StockQuote> fetchStockSymbol(){
-        return template.query(DBSql.FETCH_STOCKSYMBOL,(Object[]) null,new StockFileMapper());
+     public String fetchStockSymbol(){
+        return template.queryForObject(DBSql.FETCH_STOCKSYMBOL,(Object[]) null,String.class);
      }
      public List<StockQuote> fetchStockQuotes(String stockSymbol){
         Object[] args=new Object[]{stockSymbol};
