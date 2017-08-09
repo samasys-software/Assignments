@@ -1,5 +1,6 @@
 package com.stock;
 
+import com.stock.bussinessobjects.StockQuote;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

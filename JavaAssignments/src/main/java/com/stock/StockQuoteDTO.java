@@ -1,18 +1,16 @@
 package com.stock;
 
+import com.stock.bussinessobjects.StockQuote;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 /**
- * Created by SamayuSoftcorp on 28-07-2017.
+ * Created by SamayuSoftcorp on 08-08-2017.
  */
 @Component
-public class StockQuote {
-
-
-
+public class StockQuoteDTO {
 
     private String stockSymbol;
     private Date date;
@@ -49,7 +47,7 @@ public class StockQuote {
     public void setDate(Date date) {
         this.date = date;
     }
-    public String getStockSymbol() {
+    public  String getStockSymbol() {
         return stockSymbol;
     }
 
@@ -57,5 +55,14 @@ public class StockQuote {
         this.stockSymbol = stockSymbol;
     }
 
-}
+    public List<StockQuote> getResult() {
+        return result;
+    }
 
+    public void setResult(List<StockQuote> result) {
+        this.result = result;
+    }
+
+    private List<StockQuote> result;
+
+}
