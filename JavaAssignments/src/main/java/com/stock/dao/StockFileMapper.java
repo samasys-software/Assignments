@@ -1,4 +1,4 @@
-package com.stock;
+package com.stock.dao;
 
 import com.stock.bussinessobjects.StockQuote;
 import org.springframework.jdbc.core.RowMapper;

@@ -1,6 +1,9 @@
 package com.stock;
 
+import com.stock.bussinessobjects.AverageStockQuote;
 import com.stock.bussinessobjects.StockQuote;
+import com.stock.dao.AverageStockQuoteMapper;
+import com.stock.dao.StockFileMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -38,14 +41,11 @@ public class DatabaseManager {
          Object[] args=new Object[]{stockSymbol,date,average};
          return template.update(DBSql.SAVE_AVERAGE_STOCKQUOTES,args);
     }
-    public List fetchStockQuotesForTicker(String stockSymbol){
-         Object[] args=new Object[]{stockSymbol};
-         return template.query(DBSql.FETCH_STOCKQUOTES,args,new StockFileMapper());
-    }
 
 
-    public List fetchAverageForStockSymbol(String stockSymbol) {
+
+    public List<AverageStockQuote> fetchAverageForStockSymbol(String stockSymbol) {
         Object[] args=new Object[]{stockSymbol};
-        return template.query(DBSql.FETCH_AVERAGEFORSTOCKSYMBOL,args,new StockFileMapper());
+        return template.query(DBSql.FETCH_AVERAGEFORSTOCKSYMBOL,args,new AverageStockQuoteMapper());
     }
 }

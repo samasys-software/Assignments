@@ -21,7 +21,7 @@ public class StockQuote {
     private double low;
     private double close;
     private double volume;
-    private double adjclose;
+
 
     public Long getQuoteId() {
         return quoteId;
