@@ -43,5 +43,27 @@ public class DataBaseManager {
         return template.update(DbSql.MOVE_STOCK_QUOTE, arg);
 
     }
+    public List<StockQuote> getStockSymbol() {
 
-}
+        return template.query(DbSql.FETCH_STOCK_SYMBOL,(Object[]) null, new StockFileMapper());
+
+
+    }
+    public List<StockQuote> getStockQuote(String stockSymbol) {
+
+        Object[] args=new Object[]{stockSymbol};
+
+        return template.query(DbSql.FETCH_STOCK_QUOTES,args, new StockFileMapper());
+
+
+    }
+    public List<MovStockQuote> getMovAverage(String stockSymbol) {
+
+        Object[] args=new Object[]{stockSymbol};
+
+        return template.query(DbSql.FETCH_MOVE_AVERAGE,args, new MovStockMapper());
+
+
+
+    }
+    }
