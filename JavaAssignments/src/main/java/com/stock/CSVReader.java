@@ -37,7 +37,7 @@ public class CSVReader {
             while((line=br.readLine())!=null ){
                 String[] names= line.split(delimiter);
                 lines.add(names);
-                System.out.println("out="+names[0]+","+names[1]+","+names[2]+","+names[3]+","+names[4]+","+names[5]+","+names[6]+"");
+               // System.out.println("out="+names[0]+","+names[1]+","+names[2]+","+names[3]+","+names[4]+","+names[5]+","+names[6]+"");
                 System.out.println(lines);
                 System.out.println("lines");
             }

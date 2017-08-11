@@ -1,14 +1,12 @@
 package com.stock;
 
+import com.stock.bussinessobjects.StockQuote;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,33 +24,31 @@ public class StockFileProcessor {
         List<StockQuote> stockQuoteList = reader.parseCSVFileToObject();
 
 
+
         for (int i = 0; i < stockQuoteList.size(); i++) {
             StockQuote datas = stockQuoteList.get(i);
-            databaseManager.saveStockQuotes(datas);
+          //  databaseManager.saveStockQuotes(datas);
         }
 
-        String stockSymbol="AAPL";
+       // String stockSymbol=stockQuoteList.get(0).getStockSymbol();
+        String stockSymbol=reader.getStockSymbol();
         List<StockQuote> stockQuotes= databaseManager.fetchStockQuotes(stockSymbol);
 
 
-       for(int i=0;i<stockQuotes.size();i++) {
+       for(int i=9;i<stockQuotes.size();i++) {
 
            StockQuote result = stockQuotes.get(i);
-           System.out.println(result.getDate()+" "+result.getClose()) ;
-                       if(i<=9 ){
-                           continue;
-                       }
-                      else{
-                           double sum=0.00;
+         //  System.out.println(result.getDate()+" "+result.getClose());
+           double sum=0.00;
 
-                           for(int j=1;j<=10;j++) {
+           for(int j=1;j<=10;j++) {
 
-                               sum = sum + stockQuotes.get(i-j).getClose();
-                              }
-                        double average=sum/10;
-                        databaseManager.saveAverageStockQuotes(average,result.getDate(),result.getStockSymbol());
+               sum = sum + result.getClose();
+           }
+           double average=sum/10;
+          // databaseManager.saveAverageStockQuotes(average,result.getDate(),result.getStockSymbol());
 
-                       }
+
 
                  }
 
@@ -80,3 +76,17 @@ public class StockFileProcessor {
         +stockQuotes.get(i-6).getClose()+ stockQuotes.get(i-7).getClose()+stockQuotes.get(i-8).getClose()+stockQuotes.get(i-9).getClose()+stockQuotes.get(i-10).getClose());
         System.out.println(sum);
         double average=sum/10;*/
+   /*  if(i<=9 ){
+                           continue;
+                       }
+                      else{
+                           double sum=0.00;
+
+                           for(int j=1;j<=10;j++) {
+
+                               sum = sum + stockQuotes.get(i-j).getClose();
+                              }
+                        double average=sum/10;
+                        databaseManager.saveAverageStockQuotes(average,result.getDate(),result.getStockSymbol());
+
+                       }*/

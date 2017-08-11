@@ -11,16 +11,13 @@ import java.util.Date;
 @Component
 public class StockQuote {
 
-
-
-
     private String stockSymbol;
     private Date date;
     private double open;
     private double high;
     private double low;
     private double close;
-    private double volume;
+
 
 
     public Long getQuoteId() {

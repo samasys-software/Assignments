@@ -1,12 +1,12 @@
 package com.stock;
 
+import com.stock.bussinessobjects.StockQuote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,10 +33,14 @@ CSVReader csvReader;
           stockQuote.setDate(df.parse(line[0]));
           stockQuote.setClose(Double.parseDouble(line[1]));
           stockQuote.setStockSymbol(csvReader.getStockSymbol());
+
           stockQuotes.add(stockQuote);
           System.out.println(lists);
       }
       return stockQuotes;
+  }
+  public String getStockSymbol(){
+     return csvReader.getStockSymbol();
   }
 
 }

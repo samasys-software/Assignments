@@ -11,9 +11,17 @@ import java.util.List;
  * Created by SamayuSoftcorp on 08-08-2017.
  */
 @Component
-public class StockQuoteDTO {
+public class StockQuoteDTO extends StockErrorDTO{
 
-    private String stockSymbol;
+    public List getStockSymbol() {
+        return stockSymbol;
+    }
+
+    public void setStockSymbol(List stockSymbol) {
+        this.stockSymbol = stockSymbol;
+    }
+
+    private List stockSymbol;
     private List<StockQuote> result;
     private List<AverageStockQuote> averages;
 
@@ -21,9 +29,7 @@ public class StockQuoteDTO {
         this.averages = averages;
     }
 
-    public void setStockSymbol(String stockSymbol) {
-        this.stockSymbol = stockSymbol;
-    }
+
 
     public void setResult(List<StockQuote> result) {
         this.result = result;

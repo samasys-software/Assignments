@@ -6,6 +6,10 @@ import java.util.Date;
  * Created by SamayuSoftcorp on 10-08-2017.
  */
 public class AverageStockQuote {
+    private Date date;
+    private double averagevalue;
+    private Long avgId;
+    private String stockSymbol;
     public Date getDate() {
         return date;
     }
@@ -23,8 +27,7 @@ public class AverageStockQuote {
     }
 
 
-    private Date date;
-    private double averagevalue;
+
 
     public String getStockSymbol() {
         return stockSymbol;
@@ -34,7 +37,7 @@ public class AverageStockQuote {
         this.stockSymbol = stockSymbol;
     }
 
-    private String stockSymbol;
+
 
 
     public Long getAvgId() {
@@ -45,6 +48,6 @@ public class AverageStockQuote {
         this.avgId = avgId;
     }
 
-    private Long avgId;
+
 
 }

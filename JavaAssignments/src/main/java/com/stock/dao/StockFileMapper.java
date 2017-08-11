@@ -12,12 +12,12 @@ import java.sql.SQLException;
 public class StockFileMapper implements RowMapper<StockQuote> {
 
     @Override
-    public StockQuote mapRow(ResultSet resultSet, int i) throws SQLException {
+    public StockQuote mapRow(ResultSet rs, int i) throws SQLException {
         StockQuote stockQuote=new StockQuote();
-        stockQuote.setQuoteId(resultSet.getLong("quoteId"));
-        stockQuote.setStockSymbol(resultSet.getString("stock"));
-        stockQuote.setDate(resultSet.getDate("date"));
-        stockQuote.setClose(resultSet.getDouble("price"));
+        stockQuote.setQuoteId(rs.getLong("quoteId"));
+        stockQuote.setStockSymbol(rs.getString("stock"));
+        stockQuote.setDate(rs.getDate("date"));
+        stockQuote.setClose(rs.getDouble("price"));
         return stockQuote;
 
     }
