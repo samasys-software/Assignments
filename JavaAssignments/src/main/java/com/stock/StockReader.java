@@ -22,7 +22,6 @@ public class StockReader {
 CSVReader csvReader;
    public final static String DATE_FORMAT = "yyyy-MM-dd";
 
-
   public List<StockQuote> parseCSVFileToObject() throws ParseException {
       List<StockQuote> stockQuotes = new LinkedList<StockQuote>();
       List<String[]> lists = csvReader.read();
