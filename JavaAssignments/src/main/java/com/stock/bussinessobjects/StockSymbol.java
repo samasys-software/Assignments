@@ -11,7 +11,6 @@ public class StockSymbol {
     public void setStockSymbol(String stockSymbol) {
         this.stockSymbol = stockSymbol;
     }
-
     private String stockSymbol;
     private long quoteId;
 

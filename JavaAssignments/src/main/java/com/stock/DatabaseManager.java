@@ -31,6 +31,7 @@ public class DatabaseManager {
        Object[] args=new Object[]{stockQuote.getStockSymbol(),stockQuote.getDate(),stockQuote.getClose()};
         return template.update(DBSql.SAVE_STOCKQUOTES,args);
      }
+
      public List<StockSymbol> fetchStockSymbol(){
         try {
             return template.query(DBSql.FETCH_STOCKSYMBOL, (Object[]) null, new StockSymbolMapper());

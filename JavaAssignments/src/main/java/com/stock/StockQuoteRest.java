@@ -26,8 +26,6 @@ import java.util.List;
 
 public class StockQuoteRest {
 
-
-
  private final DatabaseManager databaseManager;
 
 

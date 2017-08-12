@@ -24,7 +24,6 @@ public class StockFileProcessor {
         List<StockQuote> stockQuoteList = reader.parseCSVFileToObject();
 
 
-
         for (int i = 0; i < stockQuoteList.size(); i++) {
             StockQuote datas = stockQuoteList.get(i);
            databaseManager.saveStockQuotes(datas);

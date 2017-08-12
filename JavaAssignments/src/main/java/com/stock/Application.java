@@ -24,9 +24,7 @@ public class Application implements CommandLineRunner {
 
             //   processor.process();
             System.out.println("Welcome");
-          //  rest.getStockSymbol();
-           // rest.getStockQuotes("AAPL");
-         //   rest.getAverageForStockSymbol("AAPL");
+
 
     }
     public static void main(String args[]){

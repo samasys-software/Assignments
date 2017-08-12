@@ -19,7 +19,6 @@ public class StockSymbolMapper implements RowMapper<StockSymbol> {
         ticker.setStockSymbol(resultSet.getString("stock"));
 
         return ticker;
-
     }
 
 

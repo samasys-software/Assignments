@@ -10,6 +10,7 @@ public class AverageStockQuote {
     private double averagevalue;
     private Long avgId;
     private String stockSymbol;
+
     public Date getDate() {
         return date;
     }

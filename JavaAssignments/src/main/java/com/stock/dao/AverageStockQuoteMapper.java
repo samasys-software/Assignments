@@ -21,4 +21,5 @@ public class AverageStockQuoteMapper implements RowMapper<AverageStockQuote> {
         return averageStockQuote;
 
     }
+
 }

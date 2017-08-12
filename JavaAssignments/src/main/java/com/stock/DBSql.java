@@ -12,6 +12,8 @@ public class DBSql {
    public final static String FETCH_STOCKSYMBOL="select distinct stock from ramya_stock_quotes";
    public final static String FETCH_STOCKQUOTES="select * from ramya_stock_quotes  where stock=? order by date";
    public final static String SAVE_AVERAGE_STOCKQUOTES="insert into ramya_mov_average(stock,date,averagevalue ) values(?,?,?)";
+
    public final static String FETCH_AVERAGEFORSTOCKSYMBOL="select * from ramya_mov_average where stock=? order by date" ;
 
 }
+

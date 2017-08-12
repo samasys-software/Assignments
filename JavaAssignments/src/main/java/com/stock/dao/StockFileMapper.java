@@ -21,4 +21,5 @@ public class StockFileMapper implements RowMapper<StockQuote> {
         return stockQuote;
     }
 
+
 }

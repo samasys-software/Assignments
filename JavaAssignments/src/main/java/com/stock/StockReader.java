@@ -17,6 +17,7 @@ import java.util.List;
 @Component// spring bean component
 
 public class StockReader {
+    s
 @Autowired
 CSVReader csvReader;
    public final static String DATE_FORMAT = "yyyy-MM-dd";

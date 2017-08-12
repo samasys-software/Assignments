@@ -19,7 +19,6 @@ public class StockQuote {
     private double close;
 
 
-
     public Long getQuoteId() {
         return quoteId;
     }
