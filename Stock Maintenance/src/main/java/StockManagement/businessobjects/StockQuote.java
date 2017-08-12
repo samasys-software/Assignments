@@ -1,4 +1,4 @@
-package StockManagement;
+package StockManagement.businessobjects;
 
 import java.util.Date;
 
@@ -105,5 +105,7 @@ public class StockQuote
     }
 
     private long quoteId;
+
+
 
 }

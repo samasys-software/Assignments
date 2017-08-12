@@ -1,5 +1,8 @@
-package StockManagement;
+package StockManagement.dao;
 
+import StockManagement.businessobjects.MovAverageStockQuote;
+import StockManagement.businessobjects.StockQuote;
+import StockManagement.businessobjects.StockSymbol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -34,5 +37,22 @@ public class DatabaseManager
     {
         Object[] args = new Object[] {stock,date,Average};
         return template.update(DBSQL.INSERT_STOCK_AVG, args);
+    }
+
+    public List<StockSymbol> fetchStockSymbol()
+    {
+        return template.query(DBSQL.FETCH_STOCK_SYMBOL, (Object[]) null, new SymbolMapper());
+    }
+
+    public List<StockQuote> fetchStockQuotes(String stockSymbol)
+    {
+        Object [] args = new Object[] {stockSymbol};
+        return template.query(DBSQL.FETCH_STOCK_QUOTES, args, new StockMapper());
+    }
+
+    public List<MovAverageStockQuote> fetchMovAverage(String stockSymbol)
+    {
+        Object [] args = new Object[] {stockSymbol};
+        return template.query(DBSQL.FETCH_MOV_AVG, args, new MovAverageMapper());
     }
 }

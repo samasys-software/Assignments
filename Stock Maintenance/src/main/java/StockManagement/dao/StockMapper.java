@@ -1,5 +1,6 @@
-package StockManagement;
+package StockManagement.dao;
 
+import StockManagement.businessobjects.StockQuote;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

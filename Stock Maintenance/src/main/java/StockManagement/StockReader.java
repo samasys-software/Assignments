@@ -1,5 +1,6 @@
 package StockManagement;
 
+import StockManagement.businessobjects.StockQuote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
