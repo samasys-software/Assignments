@@ -15,7 +15,7 @@ public class StockSymbolMapper implements RowMapper<StockSymbol> {
     @Override
     public StockSymbol mapRow(ResultSet resultSet, int i) throws SQLException {
         StockSymbol ticker=new StockSymbol();
-      //  ticker.setQuoteId(resultSet.getLong("quoteId"));
+
         ticker.setStockSymbol(resultSet.getString("stock"));
 
         return ticker;

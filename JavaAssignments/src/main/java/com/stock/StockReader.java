@@ -29,7 +29,7 @@ CSVReader csvReader;
           String[] line = lists.get(i);
           StockQuote stockQuote = new StockQuote();
           DateFormat df = new SimpleDateFormat(DATE_FORMAT);
-        //  System.out.println(df);
+
           stockQuote.setDate(df.parse(line[0]));
           stockQuote.setClose(Double.parseDouble(line[1]));
           stockQuote.setStockSymbol(csvReader.getStockSymbol());

@@ -54,5 +54,6 @@ public class StockQuote {
         this.stockSymbol = stockSymbol;
     }
 
+
 }
 

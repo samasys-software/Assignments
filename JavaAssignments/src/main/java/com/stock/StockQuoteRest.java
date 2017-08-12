@@ -1,27 +1,29 @@
 package com.stock;
-
-
 import com.stock.bussinessobjects.AverageStockQuote;
 import com.stock.bussinessobjects.StockQuote;
 import com.stock.bussinessobjects.StockSymbol;
 import com.stock.dto.StockQuoteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import javax.inject.Named;
 
 import javax.ws.rs.*;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.text.ParseException;
+
 import java.util.List;
 
 
 /**
  * Created by SamayuSoftcorp on 08-08-2017.
  */
+@RestController
 @Named
-@Path("/stockquote/")
-@Component
+
 public class StockQuoteRest {
 
 
@@ -35,7 +37,7 @@ public StockQuoteRest(DatabaseManager manager) {
 }
 
     @GET
-    @Path("getStockSymbol")
+    @RequestMapping("getStockSymbols")
     @Produces(MediaType.APPLICATION_JSON)
 
     public StockQuoteDTO getStockSymbol() throws Exception {
@@ -43,8 +45,6 @@ public StockQuoteRest(DatabaseManager manager) {
     try {
 
         List<StockSymbol> stockSymbol = databaseManager.fetchStockSymbol();
-        System.out.println(stockSymbol.get(0).getStockSymbol());
-        System.out.println(stockSymbol.get(1).getStockSymbol());
         dto.setStockSymbol(stockSymbol);
     }
     catch (Exception er){
@@ -58,22 +58,15 @@ public StockQuoteRest(DatabaseManager manager) {
 
 
     @GET
-    @Path("getStockQuotes")
+    @RequestMapping("getStockQuotes")
     @Produces(MediaType.APPLICATION_JSON)
     public StockQuoteDTO getStockQuotes(@QueryParam("stockSymbol") String stockSymbol) throws Exception {
 
                 StockQuoteDTO dto=new StockQuoteDTO();
                 try {
+                    List<StockQuote> stockQuotelist = databaseManager.fetchStockQuotesForTicker(stockSymbol);
 
-                        List<StockQuote> stockQuotelist = databaseManager.fetchStockQuotesForTicker(stockSymbol);
-                        System.out.println(stockSymbol);
-                    System.out.println(stockQuotelist.get(0).getDate());
-                    System.out.println(stockQuotelist.get(0).getQuoteId());
-                    System.out.println(stockQuotelist.get(0).getStockSymbol());
-                    System.out.println(stockQuotelist.get(0).getClose());
-                    System.out.println(stockQuotelist.get(1).getQuoteId());
-
-                        dto.setResult(stockQuotelist);
+                     dto.setResult(stockQuotelist);
 
                 }
                 catch (Exception e){
@@ -85,17 +78,14 @@ public StockQuoteRest(DatabaseManager manager) {
        }
 
     @GET
-    @Path("getAverageForStockSymbol")
+    @RequestMapping("getAverageForStockSymbol")
     @Produces(MediaType.APPLICATION_JSON)
     public StockQuoteDTO getAverageForStockSymbol(@QueryParam("stockSymbol") String stockSymbol) throws Exception{
 
         StockQuoteDTO dto=new StockQuoteDTO();
         try {
             List<AverageStockQuote> average = databaseManager.fetchAverageForStockSymbol(stockSymbol);
-            System.out.println(average.get(0).getAveragevalue());
-            System.out.println(average.get(0).getStockSymbol());
-            System.out.println(average.get(0).getDate());
-             dto.setAverages(average);
+            dto.setAverages(average);
 
         }
         catch (Exception e){
@@ -110,13 +100,3 @@ public StockQuoteRest(DatabaseManager manager) {
 
 
 
-//  List<StockSymbol> stockSymbol = databaseManager.fetchStockSymbol();
-//  for(int i=0;i<stockSymbol.size();i++) {
-// StockQuote stockQuote=new StockQuote();
-// List<StockSymbol> stockSymbol = databaseManager.fetchStockSymbol();
-// StockSymbol  stock=stockSymbol.get(i);
-//List stockSymbol = databaseManager.fetchStockSymbol();
-//  System.out.println(stockSymbol);
-//for(int i=0;i<stockSymbol.size();i++) {
-
-// }

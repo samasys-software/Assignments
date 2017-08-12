@@ -19,7 +19,6 @@ public class StockFileMapper implements RowMapper<StockQuote> {
         stockQuote.setDate(rs.getDate("date"));
         stockQuote.setClose(rs.getDouble("price"));
         return stockQuote;
-
     }
 
 }

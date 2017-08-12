@@ -18,16 +18,15 @@ public class Application implements CommandLineRunner {
     @Autowired
 
     StockFileProcessor processor ;
-    @Autowired
-    StockQuoteRest rest;
+
 
     public void run (String...strings) throws Exception {
 
-               processor.process();
+            //   processor.process();
             System.out.println("Welcome");
-            rest.getStockSymbol();
-            rest.getStockQuotes("AAPL");
-            rest.getAverageForStockSymbol("AAPL");
+          //  rest.getStockSymbol();
+           // rest.getStockQuotes("AAPL");
+         //   rest.getAverageForStockSymbol("AAPL");
 
     }
     public static void main(String args[]){

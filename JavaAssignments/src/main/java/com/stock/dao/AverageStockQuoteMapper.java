@@ -17,7 +17,6 @@ public class AverageStockQuoteMapper implements RowMapper<AverageStockQuote> {
         averageStockQuote.setAvgId(resultSet.getLong("avg_id"));
         averageStockQuote.setStockSymbol(resultSet.getString("stock"));
         averageStockQuote.setDate(resultSet.getDate("date"));
-
         averageStockQuote.setAveragevalue(resultSet.getDouble("averagevalue"));
         return averageStockQuote;
 

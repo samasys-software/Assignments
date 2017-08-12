@@ -32,15 +32,26 @@ public class DatabaseManager {
         return template.update(DBSql.SAVE_STOCKQUOTES,args);
      }
      public List<StockSymbol> fetchStockSymbol(){
-        return template.query(DBSql.FETCH_STOCKSYMBOL,(Object[]) null,new StockSymbolMapper());
+        try {
+            return template.query(DBSql.FETCH_STOCKSYMBOL, (Object[]) null, new StockSymbolMapper());
+        }catch(Exception e)
+        {
+            System.out.println(e.toString());
+            return null;
+        }
      }
      public List<StockQuote> fetchStockQuotes(String stockSymbol){
         Object[] args=new Object[]{stockSymbol};
         return template.query(DBSql.FETCH_STOCKQUOTES,args,new StockFileMapper());
      }
     public List<StockQuote> fetchStockQuotesForTicker(String stockSymbol){
-        Object[] args=new Object[]{stockSymbol};
-        return template.query(DBSql.FETCH_STOCKQUOTES,args,new StockFileMapper());
+         try {
+             Object[] args = new Object[]{stockSymbol};
+             return template.query(DBSql.FETCH_STOCKQUOTES, args, new StockFileMapper());
+         }
+         catch(Exception e){
+             return null;
+         }
     }
     public int saveAverageStockQuotes(double average, Date date, String stockSymbol) {
          Object[] args=new Object[]{stockSymbol,date,average};
@@ -50,8 +61,13 @@ public class DatabaseManager {
 
 
     public List<AverageStockQuote> fetchAverageForStockSymbol(String stockSymbol) {
-        Object[] args=new Object[]{stockSymbol};
-        return template.query(DBSql.FETCH_AVERAGEFORSTOCKSYMBOL,args,new AverageStockQuoteMapper());
+        try {
+            Object[] args = new Object[]{stockSymbol};
+            return template.query(DBSql.FETCH_AVERAGEFORSTOCKSYMBOL, args, new AverageStockQuoteMapper());
+        }
+        catch(Exception e){
+            return null;
+        }
     }
 
 

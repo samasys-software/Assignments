@@ -15,11 +15,5 @@ public class StockSymbol {
     private String stockSymbol;
     private long quoteId;
 
-    public long getQuoteId() {
-        return quoteId;
-    }
 
-    public void setQuoteId(long quoteId) {
-        this.quoteId = quoteId;
-    }
 }
